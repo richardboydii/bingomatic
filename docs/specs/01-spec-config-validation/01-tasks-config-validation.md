@@ -104,7 +104,7 @@ Implement the `bingomatic validate` command using Click, integrating with the co
 
 ---
 
-### [ ] 4.0 Unit Tests
+### [x] 4.0 Unit Tests
 
 Create comprehensive unit tests for config loading, validation rules, and error handling scenarios.
 
@@ -115,19 +115,19 @@ Create comprehensive unit tests for config loading, validation rules, and error 
 
 #### 4.0 Tasks
 
-- [ ] 4.1 Create `tests/` directory and `tests/__init__.py`
-- [ ] 4.2 Add `pytest` as dev dependency
-- [ ] 4.3 Create `tests/test_config.py` with test fixtures
-- [ ] 4.4 Write test for `get_config_path()` returns correct path
-- [ ] 4.5 Write test for `load_config()` with valid YAML file
-- [ ] 4.6 Write test for `load_config()` with missing file
-- [ ] 4.7 Write test for `load_config()` with invalid YAML syntax
-- [ ] 4.8 Write test for `validate_config()` with all valid fields
-- [ ] 4.9 Write test for `validate_config()` with missing required fields
-- [ ] 4.10 Write test for `validate_config()` with wrong field types
-- [ ] 4.11 Write test for `validate_config()` with empty bingo_squares array
-- [ ] 4.12 Write test for multi-error collection (multiple validation failures)
-- [ ] 4.13 Run full test suite and capture screenshot
+- [x] 4.1 Create `tests/` directory and `tests/__init__.py`
+- [x] 4.2 Add `pytest` as dev dependency
+- [x] 4.3 Create `tests/test_config.py` with test fixtures
+- [x] 4.4 Write test for `get_config_path()` returns correct path
+- [x] 4.5 Write test for `load_config()` with valid YAML file
+- [x] 4.6 Write test for `load_config()` with missing file
+- [x] 4.7 Write test for `load_config()` with invalid YAML syntax
+- [x] 4.8 Write test for `validate_config()` with all valid fields
+- [x] 4.9 Write test for `validate_config()` with missing required fields
+- [x] 4.10 Write test for `validate_config()` with wrong field types
+- [x] 4.11 Write test for `validate_config()` with empty bingo_squares array
+- [x] 4.12 Write test for multi-error collection (multiple validation failures)
+- [x] 4.13 Run full test suite and capture screenshot
 
 **Files to create/modify:**
 
