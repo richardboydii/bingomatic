@@ -1,0 +1,158 @@
+# Tasks: Configuration File Validation
+
+**Spec Reference:** `./docs/specs/01-spec-config-validation/spec.md`
+
+## Summary
+
+Implementation tasks for reading and validating the Bingomatic configuration file from `~/.bingomatic`.
+
+## Spec Coverage
+
+| Spec Item | Task |
+|-----------|------|
+| US-1: Load Configuration File | 2.0 |
+| US-2: Validate Configuration | 2.0 |
+| US-3: Handle Missing Configuration | 2.0, 3.0 |
+| FR-1 to FR-3: Config Schema | 2.0 |
+| FR-4: CLI Interface | 3.0 |
+| FR-5 to FR-7: Validation Rules & Errors | 2.0 |
+| FR-8: Exit Codes | 3.0 |
+| Proof Artifacts | 4.0 |
+
+## Tasks
+
+### [x] 1.0 Project Setup and Dependencies
+
+Initialize the Python project structure with uv, configure pyproject.toml, and install required dependencies (Click, PyYAML).
+
+#### 1.0 Proof Artifact(s)
+
+- CLI: `uv run python -c "import click; import yaml; print('Dependencies OK')"` returns "Dependencies OK"
+- File: `pyproject.toml` exists with correct dependencies and entry point configuration
+
+#### 1.0 Tasks
+
+- [x] 1.1 Initialize project with `uv init` in the bingomatic directory
+- [x] 1.2 Configure `pyproject.toml` with project metadata, Python 3.12+ requirement, and CLI entry point
+- [x] 1.3 Add dependencies: `click` and `pyyaml`
+- [x] 1.4 Create source directory structure: `src/bingomatic/`
+- [x] 1.5 Create `src/bingomatic/__init__.py` with version info
+- [x] 1.6 Verify dependencies install correctly with `uv sync`
+
+**Files to create/modify:**
+
+- `pyproject.toml` - Project configuration and dependencies
+- `src/bingomatic/__init__.py` - Package initialization
+
+---
+
+### [ ] 2.0 Configuration Loading and Validation Module
+
+Implement the config module that reads `~/.bingomatic`, parses YAML, and validates all required fields with detailed error collection.
+
+#### 2.0 Proof Artifact(s)
+
+- CLI: `uv run python -c "from bingomatic.config import load_config, validate_config; print('Module imports OK')"` succeeds
+- Test: Manual validation of config loading with valid/invalid test files
+
+#### 2.0 Tasks
+
+- [ ] 2.1 Create `src/bingomatic/config.py` module
+- [ ] 2.2 Implement `get_config_path()` function to return `~/.bingomatic` path
+- [ ] 2.3 Implement `load_config()` function to read and parse YAML file
+- [ ] 2.4 Implement `validate_config()` function with detailed error collection
+- [ ] 2.5 Add validation for `event_name` field (non-empty string)
+- [ ] 2.6 Add validation for `logo_location` field (non-empty string)
+- [ ] 2.7 Add validation for `output_directory` field (non-empty string)
+- [ ] 2.8 Add validation for `bingo_squares` field (non-empty array)
+- [ ] 2.9 Implement error message formatting per FR-7 spec
+
+**Files to create/modify:**
+
+- `src/bingomatic/config.py` - Config loading and validation module
+
+---
+
+### [ ] 3.0 CLI Interface with Click
+
+Implement the `bingomatic validate` command using Click, integrating with the config module and handling exit codes.
+
+#### 3.0 Proof Artifact(s)
+
+- CLI: `uv run bingomatic validate` with valid `~/.bingomatic` returns "Configuration valid." and exit code 0
+- CLI: `uv run bingomatic validate` with missing config returns error message and exit code 1
+- Screenshot: `docs/specs/01-spec-config-validation/proofs/valid-config.png`
+- Screenshot: `docs/specs/01-spec-config-validation/proofs/invalid-config.png`
+
+#### 3.0 Tasks
+
+- [ ] 3.1 Create `src/bingomatic/cli.py` module with Click group
+- [ ] 3.2 Implement main `bingomatic` CLI entry point
+- [ ] 3.3 Implement `validate` subcommand
+- [ ] 3.4 Integrate config loading with missing file detection
+- [ ] 3.5 Integrate config validation with error display
+- [ ] 3.6 Implement exit code 0 for success, 1 for failure
+- [ ] 3.7 Test CLI manually with valid config
+- [ ] 3.8 Test CLI manually with missing config
+- [ ] 3.9 Test CLI manually with invalid config
+- [ ] 3.10 Capture screenshots for proof artifacts
+
+**Files to create/modify:**
+
+- `src/bingomatic/cli.py` - Click CLI implementation
+- `pyproject.toml` - Add CLI entry point `[project.scripts]`
+
+---
+
+### [ ] 4.0 Unit Tests
+
+Create comprehensive unit tests for config loading, validation rules, and error handling scenarios.
+
+#### 4.0 Proof Artifact(s)
+
+- CLI: `uv run pytest tests/ -v` passes all tests
+- Screenshot: `docs/specs/01-spec-config-validation/proofs/test-results.png`
+
+#### 4.0 Tasks
+
+- [ ] 4.1 Create `tests/` directory and `tests/__init__.py`
+- [ ] 4.2 Add `pytest` as dev dependency
+- [ ] 4.3 Create `tests/test_config.py` with test fixtures
+- [ ] 4.4 Write test for `get_config_path()` returns correct path
+- [ ] 4.5 Write test for `load_config()` with valid YAML file
+- [ ] 4.6 Write test for `load_config()` with missing file
+- [ ] 4.7 Write test for `load_config()` with invalid YAML syntax
+- [ ] 4.8 Write test for `validate_config()` with all valid fields
+- [ ] 4.9 Write test for `validate_config()` with missing required fields
+- [ ] 4.10 Write test for `validate_config()` with wrong field types
+- [ ] 4.11 Write test for `validate_config()` with empty bingo_squares array
+- [ ] 4.12 Write test for multi-error collection (multiple validation failures)
+- [ ] 4.13 Run full test suite and capture screenshot
+
+**Files to create/modify:**
+
+- `tests/__init__.py` - Test package initialization
+- `tests/test_config.py` - Config module unit tests
+- `pyproject.toml` - Add pytest dev dependency
+
+---
+
+### [ ] 5.0 Documentation Update
+
+Update README with installation, usage, and configuration instructions.
+
+#### 5.0 Proof Artifact(s)
+
+- File: `README.md` contains Installation, Usage, and Configuration sections with complete instructions
+
+#### 5.0 Tasks
+
+- [ ] 5.1 Update README.md Installation section with uv instructions
+- [ ] 5.2 Update README.md Usage section with CLI commands
+- [ ] 5.3 Update README.md Configuration section with field descriptions
+- [ ] 5.4 Add example configuration to README.md
+- [ ] 5.5 Reference `config_template.yaml` in README
+
+**Files to create/modify:**
+
+- `README.md` - Project documentation
