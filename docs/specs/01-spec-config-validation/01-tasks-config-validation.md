@@ -46,7 +46,7 @@ Initialize the Python project structure with uv, configure pyproject.toml, and i
 
 ---
 
-### [ ] 2.0 Configuration Loading and Validation Module
+### [x] 2.0 Configuration Loading and Validation Module
 
 Implement the config module that reads `~/.bingomatic`, parses YAML, and validates all required fields with detailed error collection.
 
@@ -57,15 +57,15 @@ Implement the config module that reads `~/.bingomatic`, parses YAML, and validat
 
 #### 2.0 Tasks
 
-- [ ] 2.1 Create `src/bingomatic/config.py` module
-- [ ] 2.2 Implement `get_config_path()` function to return `~/.bingomatic` path
-- [ ] 2.3 Implement `load_config()` function to read and parse YAML file
-- [ ] 2.4 Implement `validate_config()` function with detailed error collection
-- [ ] 2.5 Add validation for `event_name` field (non-empty string)
-- [ ] 2.6 Add validation for `logo_location` field (non-empty string)
-- [ ] 2.7 Add validation for `output_directory` field (non-empty string)
-- [ ] 2.8 Add validation for `bingo_squares` field (non-empty array)
-- [ ] 2.9 Implement error message formatting per FR-7 spec
+- [x] 2.1 Create `src/bingomatic/config.py` module
+- [x] 2.2 Implement `get_config_path()` function to return `~/.bingomatic` path
+- [x] 2.3 Implement `load_config()` function to read and parse YAML file
+- [x] 2.4 Implement `validate_config()` function with detailed error collection
+- [x] 2.5 Add validation for `event_name` field (non-empty string)
+- [x] 2.6 Add validation for `logo_location` field (non-empty string)
+- [x] 2.7 Add validation for `output_directory` field (non-empty string)
+- [x] 2.8 Add validation for `bingo_squares` field (non-empty array)
+- [x] 2.9 Implement error message formatting per FR-7 spec
 
 **Files to create/modify:**
 
