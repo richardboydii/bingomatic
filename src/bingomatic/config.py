@@ -33,13 +33,22 @@ class ConfigValidationError(ConfigError):
         )
 
 
+def get_config_dir() -> Path:
+    """Return the path to the configuration directory.
+
+    Returns:
+        Path to ~/.bingomatic/
+    """
+    return Path.home() / ".bingomatic"
+
+
 def get_config_path() -> Path:
     """Return the path to the configuration file.
 
     Returns:
-        Path to ~/.bingomatic
+        Path to ~/.bingomatic/config.yaml
     """
-    return Path.home() / ".bingomatic"
+    return get_config_dir() / "config.yaml"
 
 
 def load_config(config_path: Path | None = None) -> dict[str, Any]:

@@ -73,7 +73,7 @@ Implement the config module that reads `~/.bingomatic`, parses YAML, and validat
 
 ---
 
-### [ ] 3.0 CLI Interface with Click
+### [x] 3.0 CLI Interface with Click
 
 Implement the `bingomatic validate` command using Click, integrating with the config module and handling exit codes.
 
@@ -86,16 +86,16 @@ Implement the `bingomatic validate` command using Click, integrating with the co
 
 #### 3.0 Tasks
 
-- [ ] 3.1 Create `src/bingomatic/cli.py` module with Click group
-- [ ] 3.2 Implement main `bingomatic` CLI entry point
-- [ ] 3.3 Implement `validate` subcommand
-- [ ] 3.4 Integrate config loading with missing file detection
-- [ ] 3.5 Integrate config validation with error display
-- [ ] 3.6 Implement exit code 0 for success, 1 for failure
-- [ ] 3.7 Test CLI manually with valid config
-- [ ] 3.8 Test CLI manually with missing config
-- [ ] 3.9 Test CLI manually with invalid config
-- [ ] 3.10 Capture screenshots for proof artifacts
+- [x] 3.1 Create `src/bingomatic/cli.py` module with Click group
+- [x] 3.2 Implement main `bingomatic` CLI entry point
+- [x] 3.3 Implement `validate` subcommand
+- [x] 3.4 Integrate config loading with missing file detection
+- [x] 3.5 Integrate config validation with error display
+- [x] 3.6 Implement exit code 0 for success, 1 for failure
+- [x] 3.7 Test CLI manually with valid config
+- [x] 3.8 Test CLI manually with missing config
+- [x] 3.9 Test CLI manually with invalid config
+- [x] 3.10 Capture screenshots for proof artifacts
 
 **Files to create/modify:**
 
