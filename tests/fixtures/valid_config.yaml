@@ -1,0 +1,8 @@
+event_name: "DevOpsDays Austin 2026"
+logo_location: "/path/to/logo.png"
+output_directory: "/path/to/output"
+bingo_squares:
+  - "Kubernetes"
+  - "CI/CD"
+  - "Infrastructure as Code"
+  - "Observability"
