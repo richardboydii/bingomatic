@@ -137,7 +137,7 @@ Create comprehensive unit tests for config loading, validation rules, and error 
 
 ---
 
-### [ ] 5.0 Documentation Update
+### [x] 5.0 Documentation Update
 
 Update README with installation, usage, and configuration instructions.
 
@@ -147,11 +147,11 @@ Update README with installation, usage, and configuration instructions.
 
 #### 5.0 Tasks
 
-- [ ] 5.1 Update README.md Installation section with uv instructions
-- [ ] 5.2 Update README.md Usage section with CLI commands
-- [ ] 5.3 Update README.md Configuration section with field descriptions
-- [ ] 5.4 Add example configuration to README.md
-- [ ] 5.5 Reference `config_template.yaml` in README
+- [x] 5.1 Update README.md Installation section with uv instructions
+- [x] 5.2 Update README.md Usage section with CLI commands
+- [x] 5.3 Update README.md Configuration section with field descriptions
+- [x] 5.4 Add example configuration to README.md
+- [x] 5.5 Reference `config_template.yaml` in README
 
 **Files to create/modify:**
 
