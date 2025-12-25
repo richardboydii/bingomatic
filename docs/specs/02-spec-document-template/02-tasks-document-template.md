@@ -51,7 +51,7 @@ Add optional `card_count` field to configuration schema with validation and defa
 
 ---
 
-### [~] 2.0 Implement PDF Grid Rendering
+### [x] 2.0 Implement PDF Grid Rendering
 
 Create PDF generation module that renders 5×5 grids with correct measurements (1" squares, 0.5" gap between grids, 2 grids per landscape page).
 
@@ -65,20 +65,20 @@ Create PDF generation module that renders 5×5 grids with correct measurements (
 
 #### 2.0 Tasks
 
-- [ ] 2.1 Add `reportlab` dependency to `pyproject.toml` and run `uv sync`
-- [ ] 2.2 Create `src/bingomatic/pdf.py` with module docstring and imports (reportlab.lib.pagesizes, reportlab.pdfgen.canvas)
-- [ ] 2.3 Define constants: `SQUARE_SIZE = 72` (1 inch in points), `GRID_SIZE = 5`, `GAP = 36` (0.5 inch)
-- [ ] 2.4 Implement `draw_grid(canvas, x, y)` function that draws a 5×5 grid of 1" squares at given position
-- [ ] 2.5 Implement `calculate_grid_positions(page_width, page_height)` returning (left_x, left_y, right_x, right_y) for centered grids with 0.5" gap
-- [ ] 2.6 Implement `generate_pdf(output_path, card_count)` that creates landscape PDF with empty grids (no branding yet)
-- [ ] 2.7 Create `tests/test_pdf.py` with tests for grid positioning calculations
-- [ ] 2.8 Add integration test that generates a PDF and verifies file exists and has correct page count
-- [ ] 2.9 Generate test PDF and manually verify grid measurements in PDF viewer
-- [ ] 2.10 Save proof artifact: `docs/specs/02-spec-document-template/02-proofs/grid-only.pdf`
+- [x] 2.1 Add `reportlab` dependency to `pyproject.toml` and run `uv sync`
+- [x] 2.2 Create `src/bingomatic/pdf.py` with module docstring and imports (reportlab.lib.pagesizes, reportlab.pdfgen.canvas)
+- [x] 2.3 Define constants: `SQUARE_SIZE = 72` (1 inch in points), `GRID_SIZE = 5`, `GAP = 36` (0.5 inch)
+- [x] 2.4 Implement `draw_grid(canvas, x, y)` function that draws a 5×5 grid of 1" squares at given position
+- [x] 2.5 Implement `calculate_grid_positions(page_width, page_height)` returning (left_x, left_y, right_x, right_y) for centered grids with 0.5" gap
+- [x] 2.6 Implement `generate_pdf(output_path, card_count)` that creates landscape PDF with empty grids (no branding yet)
+- [x] 2.7 Create `tests/test_pdf.py` with tests for grid positioning calculations
+- [x] 2.8 Add integration test that generates a PDF and verifies file exists and has correct page count
+- [x] 2.9 Generate test PDF and manually verify grid measurements in PDF viewer
+- [x] 2.10 Save proof artifact: `docs/specs/02-spec-document-template/02-proofs/grid-only.pdf`
 
 ---
 
-### [ ] 3.0 Add Event Branding Elements
+### [~] 3.0 Add Event Branding Elements
 
 Add event name header above each grid and logo in center square with proper scaling.
 
