@@ -8,6 +8,8 @@ from bingomatic.config import (
     ConfigError,
     ConfigFileNotFoundError,
     ConfigValidationError,
+    DEFAULT_CARD_COUNT,
+    get_card_count,
     get_config_dir,
     get_config_path,
     load_config,
@@ -207,3 +209,95 @@ class TestLoadAndValidateConfig:
             load_and_validate_config(invalid_config)
 
         assert len(exc_info.value.errors) >= 1
+
+
+class TestCardCountValidation:
+    """Tests for card_count field validation."""
+
+    def _valid_base_config(self) -> dict:
+        """Return a valid base config for testing card_count."""
+        return {
+            "event_name": "Test Event",
+            "logo_location": "/path/to/logo.png",
+            "output_directory": "/path/to/output",
+            "bingo_squares": ["item1", "item2"],
+        }
+
+    def test_validate_config_with_valid_card_count(self):
+        """validate_config accepts valid positive integer card_count."""
+        config = self._valid_base_config()
+        config["card_count"] = 10
+
+        errors = validate_config(config)
+        assert errors == []
+
+    def test_validate_config_without_card_count(self):
+        """validate_config accepts config without card_count (optional field)."""
+        config = self._valid_base_config()
+
+        errors = validate_config(config)
+        assert errors == []
+
+    def test_validate_config_with_string_card_count(self):
+        """validate_config rejects string card_count."""
+        config = self._valid_base_config()
+        config["card_count"] = "invalid"
+
+        errors = validate_config(config)
+        assert len(errors) == 1
+        assert "card_count" in errors[0]
+        assert "integer" in errors[0]
+
+    def test_validate_config_with_zero_card_count(self):
+        """validate_config rejects zero card_count."""
+        config = self._valid_base_config()
+        config["card_count"] = 0
+
+        errors = validate_config(config)
+        assert len(errors) == 1
+        assert "positive integer" in errors[0]
+
+    def test_validate_config_with_negative_card_count(self):
+        """validate_config rejects negative card_count."""
+        config = self._valid_base_config()
+        config["card_count"] = -5
+
+        errors = validate_config(config)
+        assert len(errors) == 1
+        assert "positive integer" in errors[0]
+
+    def test_validate_config_with_float_card_count(self):
+        """validate_config rejects float card_count."""
+        config = self._valid_base_config()
+        config["card_count"] = 3.5
+
+        errors = validate_config(config)
+        assert len(errors) == 1
+        assert "integer" in errors[0]
+
+    def test_validate_config_with_bool_card_count(self):
+        """validate_config rejects boolean card_count."""
+        config = self._valid_base_config()
+        config["card_count"] = True
+
+        errors = validate_config(config)
+        assert len(errors) == 1
+        assert "integer" in errors[0]
+
+
+class TestGetCardCount:
+    """Tests for get_card_count helper function."""
+
+    def test_get_card_count_returns_value_when_present(self):
+        """get_card_count returns the configured value."""
+        config = {"card_count": 10}
+        assert get_card_count(config) == 10
+
+    def test_get_card_count_returns_default_when_missing(self):
+        """get_card_count returns default when card_count not in config."""
+        config = {}
+        assert get_card_count(config) == DEFAULT_CARD_COUNT
+
+    def test_default_card_count_is_two(self):
+        """DEFAULT_CARD_COUNT is 2."""
+        assert DEFAULT_CARD_COUNT == 2
