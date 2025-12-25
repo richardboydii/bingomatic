@@ -129,7 +129,7 @@ Wire up `bingomatic generate` command with config loading, logo validation, outp
 
 ---
 
-### [~] 5.0 Complete Test Suite and Proof Artifacts
+### [x] 5.0 Complete Test Suite and Proof Artifacts
 
 Finalize unit tests for all components and collect proof artifacts for spec validation.
 
@@ -143,13 +143,13 @@ Finalize unit tests for all components and collect proof artifacts for spec vali
 
 #### 5.0 Tasks
 
-- [ ] 5.1 Review test coverage for `config.py` changes (card_count validation)
-- [ ] 5.2 Review test coverage for `pdf.py` (grid rendering, branding, page count)
-- [ ] 5.3 Review test coverage for `cli.py` generate command (success and error paths)
-- [ ] 5.4 Run full test suite: `uv run pytest tests/ -v` and verify all pass
-- [ ] 5.5 Create `docs/specs/02-spec-document-template/02-proofs/` directory
-- [ ] 5.6 Generate final sample PDF and save as `02-proofs/sample-output.pdf`
-- [ ] 5.7 Capture measurement screenshot showing 1" squares and save as `02-proofs/measurement.png`
-- [ ] 5.8 Capture CLI success output screenshot and save as `02-proofs/cli-success.png`
-- [ ] 5.9 Capture pytest results screenshot and save as `02-proofs/test-results.png`
-- [ ] 5.10 Update README.md with `bingomatic generate` command documentation
+- [x] 5.1 Review test coverage for `config.py` changes (card_count validation)
+- [x] 5.2 Review test coverage for `pdf.py` (grid rendering, branding, page count)
+- [x] 5.3 Review test coverage for `cli.py` generate command (success and error paths)
+- [x] 5.4 Run full test suite: `uv run pytest tests/ -v` and verify all pass
+- [x] 5.5 Create `docs/specs/02-spec-document-template/02-proofs/` directory
+- [x] 5.6 Generate final sample PDF and save as `02-proofs/sample-output.pdf`
+- [x] 5.7 Capture measurement screenshot showing 1" squares and save as `02-proofs/measurement.png`
+- [x] 5.8 Capture CLI success output screenshot and save as `02-proofs/cli-success.png`
+- [x] 5.9 Capture pytest results screenshot and save as `02-proofs/test-results.png`
+- [x] 5.10 Update README.md with `bingomatic generate` command documentation

@@ -39,6 +39,26 @@ Configuration valid.
 Config file missing, please create it using the template and README instructions.
 ```
 
+### Generate Bingo Cards
+
+Generate PDF bingo cards using your configuration:
+
+```bash
+uv run bingomatic generate
+```
+
+**Success output:**
+
+```
+Generated 2 bingo cards: /path/to/output/bingo-cards-2025-12-25.pdf
+```
+
+The generated PDF will contain:
+- Two 5×5 bingo card grids per landscape page
+- Each square measuring 1" × 1"
+- Event name centered above each grid
+- Event logo in the center square
+
 ## Configuration
 
 Bingomatic uses a YAML configuration file located at `~/.bingomatic/config.yaml`.
@@ -67,6 +87,7 @@ cp config_template.yaml ~/.bingomatic/config.yaml
 | `logo_location` | string | Yes | Path to your event logo image |
 | `output_directory` | string | Yes | Directory where generated cards will be saved |
 | `bingo_squares` | array | Yes | List of phrases/terms for bingo squares |
+| `card_count` | integer | No | Number of bingo cards to generate (default: 2) |
 
 ### Example Configuration
 
@@ -74,6 +95,7 @@ cp config_template.yaml ~/.bingomatic/config.yaml
 event_name: "DevOpsDays Austin 2026"
 logo_location: "/path/to/logo.png"
 output_directory: "/path/to/output"
+card_count: 2
 bingo_squares:
   - "Kubernetes"
   - "CI/CD"
