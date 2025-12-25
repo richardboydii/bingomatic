@@ -121,7 +121,32 @@ def validate_config(config: dict[str, Any]) -> list[str]:
             elif expected_type == list and len(value) == 0:
                 errors.append(f"Field 'bingo_squares' must contain at least one item")
 
+    # Validate optional card_count field if present
+    if "card_count" in config:
+        card_count = config["card_count"]
+        if not isinstance(card_count, int) or isinstance(card_count, bool):
+            errors.append(
+                f"Field 'card_count' must be an integer, got {type(card_count).__name__}"
+            )
+        elif card_count < 1:
+            errors.append("Field 'card_count' must be a positive integer (>= 1)")
+
     return errors
+
+
+DEFAULT_CARD_COUNT = 2
+
+
+def get_card_count(config: dict[str, Any]) -> int:
+    """Get the card count from config, returning default if not specified.
+
+    Args:
+        config: Dictionary containing the configuration
+
+    Returns:
+        Number of cards to generate (defaults to 2)
+    """
+    return config.get("card_count", DEFAULT_CARD_COUNT)
 
 
 def load_and_validate_config(config_path: Path | None = None) -> dict[str, Any]:
