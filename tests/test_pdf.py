@@ -145,3 +145,44 @@ class TestGeneratePdf:
 
         assert isinstance(result, Path)
         assert result.exists()
+
+    def test_generates_pdf_with_event_name(self, tmp_path):
+        """generate_pdf creates PDF when event name is provided."""
+        output_path = tmp_path / "test.pdf"
+
+        result = generate_pdf(
+            output_path, card_count=2, event_name="Test Event 2025"
+        )
+
+        assert result.exists()
+        # PDF content is compressed; visual verification done via proof artifacts
+
+    def test_generates_pdf_with_logo(self, tmp_path):
+        """generate_pdf includes logo when provided."""
+        output_path = tmp_path / "test.pdf"
+
+        # Create a simple test logo
+        logo_path = tmp_path / "logo.png"
+        _create_test_image(logo_path)
+
+        result = generate_pdf(output_path, card_count=2, logo_path=logo_path)
+
+        assert result.exists()
+
+    def test_raises_error_for_missing_logo(self, tmp_path):
+        """generate_pdf raises FileNotFoundError for missing logo."""
+        output_path = tmp_path / "test.pdf"
+        missing_logo = tmp_path / "nonexistent.png"
+
+        with pytest.raises(FileNotFoundError) as exc_info:
+            generate_pdf(output_path, card_count=2, logo_path=missing_logo)
+
+        assert "Logo file not found" in str(exc_info.value)
+
+
+def _create_test_image(path: Path) -> None:
+    """Create a simple test PNG image."""
+    from PIL import Image
+
+    img = Image.new("RGB", (100, 100), color="red")
+    img.save(path)

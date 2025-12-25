@@ -78,7 +78,7 @@ Create PDF generation module that renders 5×5 grids with correct measurements (
 
 ---
 
-### [~] 3.0 Add Event Branding Elements
+### [x] 3.0 Add Event Branding Elements
 
 Add event name header above each grid and logo in center square with proper scaling.
 
@@ -91,18 +91,18 @@ Add event name header above each grid and logo in center square with proper scal
 
 #### 3.0 Tasks
 
-- [ ] 3.1 Implement `draw_event_name(canvas, text, grid_x, grid_y)` that draws event name centered above grid
-- [ ] 3.2 Implement `draw_logo(canvas, logo_path, grid_x, grid_y)` that draws logo in center square (row 3, col 3) with aspect ratio preservation
-- [ ] 3.3 Update `draw_grid()` to accept optional `event_name` and `logo_path` parameters
-- [ ] 3.4 Update `generate_pdf()` signature to accept `event_name` and `logo_path` from config
-- [ ] 3.5 Add error handling for logo file not found and unreadable cases
-- [ ] 3.6 Add unit tests for logo scaling calculations
-- [ ] 3.7 Generate test PDF with event name and logo, verify visual placement
-- [ ] 3.8 Save proof artifact: `docs/specs/02-spec-document-template/02-proofs/with-branding.pdf`
+- [x] 3.1 Implement `draw_event_name(canvas, text, grid_x, grid_y)` that draws event name centered above grid
+- [x] 3.2 Implement `draw_logo(canvas, logo_path, grid_x, grid_y)` that draws logo in center square (row 3, col 3) with aspect ratio preservation
+- [x] 3.3 Update `draw_grid()` to accept optional `event_name` and `logo_path` parameters
+- [x] 3.4 Update `generate_pdf()` signature to accept `event_name` and `logo_path` from config
+- [x] 3.5 Add error handling for logo file not found and unreadable cases
+- [x] 3.6 Add unit tests for logo scaling calculations
+- [x] 3.7 Generate test PDF with event name and logo, verify visual placement
+- [x] 3.8 Save proof artifact: `docs/specs/02-spec-document-template/02-proofs/with-branding.pdf`
 
 ---
 
-### [ ] 4.0 Implement CLI Generate Command
+### [~] 4.0 Implement CLI Generate Command
 
 Wire up `bingomatic generate` command with config loading, logo validation, output directory creation, and success/error messaging.
 
