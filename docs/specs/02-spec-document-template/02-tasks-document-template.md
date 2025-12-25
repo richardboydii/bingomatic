@@ -102,7 +102,7 @@ Add event name header above each grid and logo in center square with proper scal
 
 ---
 
-### [~] 4.0 Implement CLI Generate Command
+### [x] 4.0 Implement CLI Generate Command
 
 Wire up `bingomatic generate` command with config loading, logo validation, output directory creation, and success/error messaging.
 
@@ -116,20 +116,20 @@ Wire up `bingomatic generate` command with config loading, logo validation, outp
 
 #### 4.0 Tasks
 
-- [ ] 4.1 Add `generate` command to `cli.py` using Click decorator pattern
-- [ ] 4.2 Implement config loading and validation in generate command (reuse `load_and_validate_config`)
-- [ ] 4.3 Add logo file existence check with `LogoFileNotFoundError` exception and user-friendly message
-- [ ] 4.4 Implement output directory creation using `Path.mkdir(parents=True, exist_ok=True)`
-- [ ] 4.5 Generate output filename with current date: `bingo-cards-YYYY-MM-DD.pdf`
-- [ ] 4.6 Call `generate_pdf()` with config values and output path
-- [ ] 4.7 Display success message: "Generated N bingo cards: /path/to/file.pdf"
-- [ ] 4.8 Implement error handling for all FR-8 error conditions with correct exit codes
-- [ ] 4.9 Add CLI integration tests for success and error cases
-- [ ] 4.10 Run `uv run bingomatic generate` with valid config and capture CLI output proof
+- [x] 4.1 Add `generate` command to `cli.py` using Click decorator pattern
+- [x] 4.2 Implement config loading and validation in generate command (reuse `load_and_validate_config`)
+- [x] 4.3 Add logo file existence check with `LogoFileNotFoundError` exception and user-friendly message
+- [x] 4.4 Implement output directory creation using `Path.mkdir(parents=True, exist_ok=True)`
+- [x] 4.5 Generate output filename with current date: `bingo-cards-YYYY-MM-DD.pdf`
+- [x] 4.6 Call `generate_pdf()` with config values and output path
+- [x] 4.7 Display success message: "Generated N bingo cards: /path/to/file.pdf"
+- [x] 4.8 Implement error handling for all FR-8 error conditions with correct exit codes
+- [x] 4.9 Add CLI integration tests for success and error cases
+- [x] 4.10 Run `uv run bingomatic generate` with valid config and capture CLI output proof
 
 ---
 
-### [ ] 5.0 Complete Test Suite and Proof Artifacts
+### [~] 5.0 Complete Test Suite and Proof Artifacts
 
 Finalize unit tests for all components and collect proof artifacts for spec validation.
 
