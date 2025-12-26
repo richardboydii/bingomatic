@@ -70,7 +70,7 @@ Add the Bingomatic logo below the heading and CI status badge at the top of the 
 
 ---
 
-### [ ] 4.0 Verify CI Workflow Execution
+### [~] 4.0 Verify CI Workflow Execution
 
 Push changes to GitHub and verify the CI workflow runs successfully with all jobs passing.
 
@@ -82,9 +82,9 @@ Push changes to GitHub and verify the CI workflow runs successfully with all job
 
 #### 4.0 Tasks
 
-- [ ] 4.1 Commit all changes (pyproject.toml, ci.yml, README.md)
-- [ ] 4.2 Push to GitHub repository
-- [ ] 4.3 Navigate to Actions tab and verify workflow triggered
+- [x] 4.1 Commit all changes (pyproject.toml, ci.yml, README.md)
+- [x] 4.2 Push to GitHub repository
+- [~] 4.3 Navigate to Actions tab and verify workflow triggered
 - [ ] 4.4 Verify lint job passes
 - [ ] 4.5 Verify format job passes
 - [ ] 4.6 Verify test job passes on both Python 3.12 and 3.13
