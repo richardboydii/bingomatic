@@ -76,6 +76,7 @@ def generate() -> None:
                 card_count=card_count,
                 event_name=config["event_name"],
                 logo_path=logo_path,
+                bingo_squares=config["bingo_squares"],
             )
         except Exception as e:
             click.echo(f"Failed to generate PDF: {e}", err=True)

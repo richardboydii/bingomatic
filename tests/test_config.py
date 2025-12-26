@@ -44,9 +44,9 @@ class TestLoadConfig:
         config = load_config(config_path)
 
         assert config["event_name"] == "DevOpsDays Austin 2026"
-        assert config["logo_location"] == "/path/to/logo.png"
+        assert config["logo_location"] == "test_logo.png"
         assert config["output_directory"] == "/path/to/output"
-        assert len(config["bingo_squares"]) == 4
+        assert len(config["bingo_squares"]) == 24
 
     def test_load_config_with_missing_file(self):
         """load_config raises ConfigFileNotFoundError for missing file."""
@@ -77,7 +77,7 @@ class TestValidateConfig:
             "event_name": "Test Event",
             "logo_location": "/path/to/logo.png",
             "output_directory": "/path/to/output",
-            "bingo_squares": ["item1", "item2"],
+            "bingo_squares": [f"item{i}" for i in range(24)],
         }
 
         errors = validate_config(config)
@@ -124,7 +124,36 @@ class TestValidateConfig:
         errors = validate_config(config)
 
         assert len(errors) == 1
-        assert "must contain at least one item" in errors[0]
+        assert "must contain at least 24 items" in errors[0]
+        assert "got 0" in errors[0]
+
+    def test_validate_config_with_insufficient_bingo_squares(self):
+        """validate_config returns error for fewer than 24 bingo_squares."""
+        config = {
+            "event_name": "Test Event",
+            "logo_location": "/path/to/logo.png",
+            "output_directory": "/path/to/output",
+            "bingo_squares": [f"item{i}" for i in range(23)],
+        }
+
+        errors = validate_config(config)
+
+        assert len(errors) == 1
+        assert "must contain at least 24 items" in errors[0]
+        assert "got 23" in errors[0]
+
+    def test_validate_config_with_exactly_24_bingo_squares(self):
+        """validate_config accepts exactly 24 bingo_squares."""
+        config = {
+            "event_name": "Test Event",
+            "logo_location": "/path/to/logo.png",
+            "output_directory": "/path/to/output",
+            "bingo_squares": [f"item{i}" for i in range(24)],
+        }
+
+        errors = validate_config(config)
+
+        assert errors == []
 
     def test_validate_config_with_empty_string_fields(self):
         """validate_config returns errors for empty string fields."""
@@ -132,7 +161,7 @@ class TestValidateConfig:
             "event_name": "",
             "logo_location": "  ",
             "output_directory": "\t",
-            "bingo_squares": ["item1"],
+            "bingo_squares": [f"item{i}" for i in range(24)],
         }
 
         errors = validate_config(config)
@@ -220,7 +249,7 @@ class TestCardCountValidation:
             "event_name": "Test Event",
             "logo_location": "/path/to/logo.png",
             "output_directory": "/path/to/output",
-            "bingo_squares": ["item1", "item2"],
+            "bingo_squares": [f"item{i}" for i in range(24)],
         }
 
     def test_validate_config_with_valid_card_count(self):

@@ -5,13 +5,78 @@ from pathlib import Path
 import pytest
 
 from bingomatic.pdf import (
+    FONTS_DIR,
     GRID_SIZE,
     GRID_TOTAL,
     GAP,
     SQUARE_SIZE,
     calculate_grid_positions,
     generate_pdf,
+    register_fonts,
+    select_random_squares,
 )
+
+
+class TestFontRegistration:
+    """Tests for font registration."""
+
+    def test_fonts_directory_exists(self):
+        """Font directory exists in the package."""
+        assert FONTS_DIR.exists()
+        assert FONTS_DIR.is_dir()
+
+    def test_roboto_regular_font_exists(self):
+        """Roboto-Regular.ttf exists in fonts directory."""
+        font_path = FONTS_DIR / "Roboto-Regular.ttf"
+        assert font_path.exists()
+
+    def test_roboto_bold_font_exists(self):
+        """Roboto-Bold.ttf exists in fonts directory."""
+        font_path = FONTS_DIR / "Roboto-Bold.ttf"
+        assert font_path.exists()
+
+    def test_roboto_mono_font_exists(self):
+        """RobotoMono-Regular.ttf exists in fonts directory."""
+        font_path = FONTS_DIR / "RobotoMono-Regular.ttf"
+        assert font_path.exists()
+
+    def test_register_fonts_does_not_raise(self):
+        """register_fonts() completes without error."""
+        register_fonts()
+
+    def test_register_fonts_is_idempotent(self):
+        """register_fonts() can be called multiple times without error."""
+        register_fonts()
+        register_fonts()
+
+
+class TestSelectRandomSquares:
+    """Tests for random square selection."""
+
+    def test_returns_24_items_by_default(self):
+        """select_random_squares returns 24 items by default."""
+        squares = [f"Item {i}" for i in range(30)]
+        result = select_random_squares(squares)
+        assert len(result) == 24
+
+    def test_returns_unique_items(self):
+        """select_random_squares returns unique items (no duplicates)."""
+        squares = [f"Item {i}" for i in range(30)]
+        result = select_random_squares(squares)
+        assert len(result) == len(set(result))
+
+    def test_returns_different_results_on_multiple_calls(self):
+        """select_random_squares returns different results on multiple calls."""
+        squares = [f"Item {i}" for i in range(30)]
+        results = [tuple(select_random_squares(squares)) for _ in range(10)]
+        unique_results = set(results)
+        assert len(unique_results) > 1
+
+    def test_respects_custom_count(self):
+        """select_random_squares respects custom count parameter."""
+        squares = [f"Item {i}" for i in range(30)]
+        result = select_random_squares(squares, count=10)
+        assert len(result) == 10
 
 
 class TestConstants:

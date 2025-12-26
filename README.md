@@ -58,6 +58,7 @@ The generated PDF will contain:
 - Each square measuring 1" × 1"
 - Event name centered above each grid
 - Event logo in the center square
+- Name of participant below each grid
 
 ## Configuration
 
