@@ -27,7 +27,7 @@ Add Ruff to dev dependencies and verify the codebase passes both lint and format
 
 ---
 
-### [ ] 2.0 Create GitHub Actions CI Workflow
+### [x] 2.0 Create GitHub Actions CI Workflow
 
 Create the CI workflow file with lint, format, and test jobs that run on push and PR to all branches.
 
@@ -39,12 +39,12 @@ Create the CI workflow file with lint, format, and test jobs that run on push an
 
 #### 2.0 Tasks
 
-- [ ] 2.1 Create `.github/workflows/` directory structure
-- [ ] 2.2 Create `ci.yml` with workflow name and triggers (push, pull_request on all branches)
-- [ ] 2.3 Add `lint` job: ubuntu-latest, Python 3.12, install uv, run `ruff check .`
-- [ ] 2.4 Add `format` job: ubuntu-latest, Python 3.12, install uv, run `ruff format --check .`
-- [ ] 2.5 Add `test` job: ubuntu-latest, Python matrix [3.12, 3.13], install uv, run `uv run pytest tests/ -v`
-- [ ] 2.6 Validate YAML syntax locally
+- [x] 2.1 Create `.github/workflows/` directory structure
+- [x] 2.2 Create `ci.yml` with workflow name and triggers (push, pull_request on all branches)
+- [x] 2.3 Add `lint` job: ubuntu-latest, Python 3.12, install uv, run `ruff check .`
+- [x] 2.4 Add `format` job: ubuntu-latest, Python 3.12, install uv, run `ruff format --check .`
+- [x] 2.5 Add `test` job: ubuntu-latest, Python matrix [3.12, 3.13], install uv, run `uv run pytest tests/ -v`
+- [x] 2.6 Validate YAML syntax locally
 
 ---
 
