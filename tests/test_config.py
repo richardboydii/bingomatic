@@ -201,10 +201,12 @@ class TestConfigValidationError:
 
     def test_multiple_error_format(self):
         """ConfigValidationError with multiple errors formats correctly."""
-        error = ConfigValidationError([
-            "Missing required field: event_name",
-            "Field 'bingo_squares' must be a list, got str",
-        ])
+        error = ConfigValidationError(
+            [
+                "Missing required field: event_name",
+                "Field 'bingo_squares' must be a list, got str",
+            ]
+        )
 
         error_str = str(error)
         assert "Configuration validation failed with 2 errors:" in error_str

@@ -28,8 +28,9 @@ class ConfigValidationError(ConfigError):
     def _format_errors(self) -> str:
         if len(self.errors) == 1:
             return self.errors[0]
-        return f"Configuration validation failed with {len(self.errors)} errors:\n" + "\n".join(
-            f"  - {error}" for error in self.errors
+        return (
+            f"Configuration validation failed with {len(self.errors)} errors:\n"
+            + "\n".join(f"  - {error}" for error in self.errors)
         )
 
 
@@ -116,10 +117,12 @@ def validate_config(config: dict[str, Any]) -> list[str]:
                 errors.append(
                     f"Field '{field}' must be a {expected_type.__name__}, got {actual_type}"
                 )
-            elif expected_type == str and not value.strip():
+            elif expected_type is str and not value.strip():
                 errors.append(f"Field '{field}' must be a non-empty string")
-            elif expected_type == list and len(value) < 24:
-                errors.append(f"Field 'bingo_squares' must contain at least 24 items, got {len(value)}")
+            elif expected_type is list and len(value) < 24:
+                errors.append(
+                    f"Field 'bingo_squares' must contain at least 24 items, got {len(value)}"
+                )
 
     # Validate optional card_count field if present
     if "card_count" in config:
