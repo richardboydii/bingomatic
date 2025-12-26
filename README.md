@@ -1,4 +1,8 @@
+[![CI](https://github.com/richardboydii/bingomatic/actions/workflows/ci.yml/badge.svg)](https://github.com/richardboydii/bingomatic/actions/workflows/ci.yml)
+
 # Bingomatic
+
+![Bingomatic Logo](images/bingomatic_logo.png)
 
 A bingo card generator for conferences like DevOpsDays. This is a simple Python CLI that will generate 5" x 5" bingo cards, two to a landscape page, for use at events and conferences.
 

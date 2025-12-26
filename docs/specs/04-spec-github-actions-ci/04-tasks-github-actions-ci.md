@@ -48,7 +48,7 @@ Create the CI workflow file with lint, format, and test jobs that run on push an
 
 ---
 
-### [ ] 3.0 Update README with Logo and CI Badge
+### [x] 3.0 Update README with Logo and CI Badge
 
 Add the Bingomatic logo below the heading and CI status badge at the top of the README.
 
@@ -60,13 +60,13 @@ Add the Bingomatic logo below the heading and CI status badge at the top of the 
 
 #### 3.0 Tasks
 
-- [ ] 3.1 Add CI status badge at top of README (before `# Bingomatic` heading)
+- [x] 3.1 Add CI status badge at top of README (before `# Bingomatic` heading)
   - Badge format: `[![CI](https://github.com/{owner}/{repo}/actions/workflows/ci.yml/badge.svg)](https://github.com/{owner}/{repo}/actions/workflows/ci.yml)`
   - Note: Update `{owner}/{repo}` placeholder with actual repository path
-- [ ] 3.2 Add logo image after `# Bingomatic` heading
+- [x] 3.2 Add logo image after `# Bingomatic` heading
   - Format: `![Bingomatic Logo](images/bingomatic_logo.png)`
   - Consider adding width constraint if logo is too large
-- [ ] 3.3 Preview README locally to verify rendering
+- [x] 3.3 Preview README locally to verify rendering
 
 ---
 
