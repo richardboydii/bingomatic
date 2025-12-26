@@ -1,7 +1,7 @@
 [![CI](https://github.com/richardboydii/bingomatic/actions/workflows/ci.yml/badge.svg)](https://github.com/richardboydii/bingomatic/actions/workflows/ci.yml)
 
 <p align="center">
-  <img src="images/bingomatic_logo.png" alt="Bingomatic Logo" width="100" height="100">
+  <img src="images/bingomatic_logo.png" alt="Bingomatic Logo" width="300" height="300">
 </p>
 
 # Bingomatic
