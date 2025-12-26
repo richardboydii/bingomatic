@@ -74,12 +74,13 @@ class TestGenerateCommand:
 
     def test_generate_with_missing_logo(self, runner, tmp_path, monkeypatch):
         """generate fails gracefully with missing logo file."""
+        bingo_items = "\n".join([f'  - "Item {i}"' for i in range(24)])
         config_content = f"""
 event_name: "Test Event"
 logo_location: "{tmp_path / 'nonexistent.png'}"
 output_directory: "{tmp_path / 'output'}"
 bingo_squares:
-  - "Item 1"
+{bingo_items}
 """
         config_dir = tmp_path / ".bingomatic"
         config_dir.mkdir()

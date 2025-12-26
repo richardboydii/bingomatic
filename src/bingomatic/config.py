@@ -118,8 +118,8 @@ def validate_config(config: dict[str, Any]) -> list[str]:
                 )
             elif expected_type == str and not value.strip():
                 errors.append(f"Field '{field}' must be a non-empty string")
-            elif expected_type == list and len(value) == 0:
-                errors.append(f"Field 'bingo_squares' must contain at least one item")
+            elif expected_type == list and len(value) < 24:
+                errors.append(f"Field 'bingo_squares' must contain at least 24 items, got {len(value)}")
 
     # Validate optional card_count field if present
     if "card_count" in config:
