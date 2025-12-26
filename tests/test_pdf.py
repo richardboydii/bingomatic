@@ -113,9 +113,6 @@ class TestCalculateGridPositions:
         page_height = 612
         left_x, _, right_x, _ = calculate_grid_positions(page_width, page_height)
 
-        # Total width of both grids plus gap
-        total_width = (GRID_TOTAL * 2) + GAP
-
         # Left margin should equal right margin
         left_margin = left_x
         right_margin = page_width - (right_x + GRID_TOTAL)
@@ -215,9 +212,7 @@ class TestGeneratePdf:
         """generate_pdf creates PDF when event name is provided."""
         output_path = tmp_path / "test.pdf"
 
-        result = generate_pdf(
-            output_path, card_count=2, event_name="Test Event 2025"
-        )
+        result = generate_pdf(output_path, card_count=2, event_name="Test Event 2025")
 
         assert result.exists()
         # PDF content is compressed; visual verification done via proof artifacts

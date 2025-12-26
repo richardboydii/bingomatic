@@ -65,7 +65,9 @@ def select_random_squares(bingo_squares: list[str], count: int = 24) -> list[str
     return random.sample(bingo_squares, count)
 
 
-def _wrap_text(text: str, font_name: str, font_size: float, max_width: float) -> list[str]:
+def _wrap_text(
+    text: str, font_name: str, font_size: float, max_width: float
+) -> list[str]:
     """Wrap text to fit within a maximum width.
 
     Args:
@@ -343,7 +345,9 @@ def _draw_name_field(canvas: Canvas, grid_x: float, grid_y: float) -> None:
     canvas.line(line_start_x, line_y, line_end_x, line_y)
 
 
-def _draw_event_name(canvas: Canvas, event_name: str, grid_x: float, grid_y: float) -> None:
+def _draw_event_name(
+    canvas: Canvas, event_name: str, grid_x: float, grid_y: float
+) -> None:
     """Draw event name centered above the grid.
 
     Args:
@@ -360,7 +364,9 @@ def _draw_event_name(canvas: Canvas, event_name: str, grid_x: float, grid_y: flo
     canvas.drawCentredString(text_x, text_y, event_name)
 
 
-def _draw_logo(canvas: Canvas, logo_path: Path | str, grid_x: float, grid_y: float) -> None:
+def _draw_logo(
+    canvas: Canvas, logo_path: Path | str, grid_x: float, grid_y: float
+) -> None:
     """Draw logo in the center square of the grid.
 
     Args:

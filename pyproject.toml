@@ -3,13 +3,22 @@ name = "bingomatic"
 version = "0.1.0"
 description = "A bingo card generator for conferences like DevOpsDays"
 readme = "README.md"
+authors = [
+  {name = "Richard Boyd II", email = "registration@richardboydii.com"},
+]
+maintainers = [
+  {name = "Richard Boyd II", email = "registration@richardboydii.com"}
+]
 requires-python = ">=3.12"
 dependencies = [
     "click>=8.0",
     "pyyaml>=6.0",
     "reportlab>=4.0",
 ]
-
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
 [project.scripts]
 bingomatic = "bingomatic.cli:main"
 
@@ -23,4 +32,5 @@ packages = ["src/bingomatic"]
 [dependency-groups]
 dev = [
     "pytest>=9.0.2",
+    "ruff>=0.8",
 ]

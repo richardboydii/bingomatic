@@ -1,7 +1,5 @@
 """Integration tests for the CLI module."""
 
-from pathlib import Path
-
 import pytest
 from click.testing import CliRunner
 
@@ -19,8 +17,8 @@ def valid_config(tmp_path):
     """Create a valid config file for testing."""
     config_content = f"""
 event_name: "Test Event 2025"
-logo_location: "{tmp_path / 'logo.png'}"
-output_directory: "{tmp_path / 'output'}"
+logo_location: "{tmp_path / "logo.png"}"
+output_directory: "{tmp_path / "output"}"
 bingo_squares:
   - "Item 1"
   - "Item 2"
@@ -33,6 +31,7 @@ card_count: 2
 
     # Create test logo
     from PIL import Image
+
     logo = tmp_path / "logo.png"
     img = Image.new("RGB", (100, 100), color="blue")
     img.save(logo)
@@ -64,7 +63,7 @@ class TestGenerateCommand:
         # Point to non-existent config
         monkeypatch.setattr(
             "bingomatic.config.get_config_path",
-            lambda: tmp_path / "nonexistent" / "config.yaml"
+            lambda: tmp_path / "nonexistent" / "config.yaml",
         )
 
         result = runner.invoke(main, ["generate"])
@@ -77,8 +76,8 @@ class TestGenerateCommand:
         bingo_items = "\n".join([f'  - "Item {i}"' for i in range(24)])
         config_content = f"""
 event_name: "Test Event"
-logo_location: "{tmp_path / 'nonexistent.png'}"
-output_directory: "{tmp_path / 'output'}"
+logo_location: "{tmp_path / "nonexistent.png"}"
+output_directory: "{tmp_path / "output"}"
 bingo_squares:
 {bingo_items}
 """
@@ -87,10 +86,7 @@ bingo_squares:
         config_file = config_dir / "config.yaml"
         config_file.write_text(config_content)
 
-        monkeypatch.setattr(
-            "bingomatic.config.get_config_path",
-            lambda: config_file
-        )
+        monkeypatch.setattr("bingomatic.config.get_config_path", lambda: config_file)
 
         result = runner.invoke(main, ["generate"])
 
