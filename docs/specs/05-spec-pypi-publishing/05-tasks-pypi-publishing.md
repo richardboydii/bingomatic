@@ -78,7 +78,7 @@ Add build and publish jobs to the CI workflow that trigger on GitHub Release cre
 
 ---
 
-### [ ] 4.0 Configure PyPI Trusted Publishing
+### [~] 4.0 Configure PyPI Trusted Publishing (USER ACTION REQUIRED)
 
 Set up OIDC trusted publishing on PyPI and verify the workflow configuration matches.
 
@@ -90,12 +90,12 @@ Set up OIDC trusted publishing on PyPI and verify the workflow configuration mat
 
 #### 4.0 Tasks
 
-- [ ] 4.1 Register project on PyPI (if not already registered)
-- [ ] 4.2 Navigate to PyPI project settings → Trusted Publishers
-- [ ] 4.3 Add GitHub as trusted publisher with: owner, repo, workflow, environment
-- [ ] 4.4 Verify workflow has `permissions: id-token: write`
-- [ ] 4.5 Verify workflow uses correct environment name (`pypi`)
-- [ ] 4.6 Document trusted publishing configuration in proof artifacts
+- [~] 4.1 Register project on PyPI (if not already registered) - **USER ACTION REQUIRED**
+- [~] 4.2 Navigate to PyPI project settings → Trusted Publishers - **USER ACTION REQUIRED**
+- [~] 4.3 Add GitHub as trusted publisher with: owner, repo, workflow, environment - **USER ACTION REQUIRED**
+- [x] 4.4 Verify workflow has `permissions: id-token: write`
+- [x] 4.5 Verify workflow uses correct environment name (`pypi`)
+- [x] 4.6 Document trusted publishing configuration in proof artifacts
 
 ---
 
