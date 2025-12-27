@@ -99,7 +99,7 @@ Set up OIDC trusted publishing on PyPI and verify the workflow configuration mat
 
 ---
 
-### [ ] 5.0 Publish to PyPI and Verify Installation
+### [~] 5.0 Publish to PyPI and Verify Installation (USER ACTION REQUIRED)
 
 Create a GitHub Release, verify the workflow runs, and confirm the package is installable from PyPI.
 
@@ -113,9 +113,9 @@ Create a GitHub Release, verify the workflow runs, and confirm the package is in
 
 #### 5.0 Tasks
 
-- [ ] 5.1 Commit all changes to branch
-- [ ] 5.2 Push branch and create PR (or merge to main)
-- [ ] 5.3 Create GitHub Release with tag `v1.0.0`
+- [x] 5.1 Commit all changes to branch
+- [~] 5.2 Push branch and create PR (or merge to main) - **USER ACTION REQUIRED**
+- [~] 5.3 Create GitHub Release with tag `v1.0.0` - **USER ACTION REQUIRED**
 - [ ] 5.4 Monitor GitHub Actions workflow execution
 - [ ] 5.5 Verify build job completes successfully
 - [ ] 5.6 Verify publish job completes successfully
