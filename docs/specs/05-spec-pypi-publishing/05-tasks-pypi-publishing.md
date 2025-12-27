@@ -30,7 +30,7 @@ Bump version to 1.0.0 and add complete package metadata including license, keywo
 
 ---
 
-### [ ] 2.0 Verify Local Package Build
+### [x] 2.0 Verify Local Package Build
 
 Build the package locally and verify it creates valid wheel and sdist artifacts that can be installed.
 
@@ -44,12 +44,12 @@ Build the package locally and verify it creates valid wheel and sdist artifacts 
 
 #### 2.0 Tasks
 
-- [ ] 2.1 Run `uv build` to create wheel and sdist
-- [ ] 2.2 Verify `dist/` contains `.whl` and `.tar.gz` files
-- [ ] 2.3 Create a clean virtual environment for testing
-- [ ] 2.4 Install wheel in clean venv: `pip install dist/bingomatic-1.0.0-py3-none-any.whl`
-- [ ] 2.5 Verify CLI works: `bingomatic --version` and `bingomatic --help`
-- [ ] 2.6 Verify dependencies installed correctly
+- [x] 2.1 Run `uv build` to create wheel and sdist
+- [x] 2.2 Verify `dist/` contains `.whl` and `.tar.gz` files
+- [x] 2.3 Create a clean virtual environment for testing
+- [x] 2.4 Install wheel in clean venv: `pip install dist/bingomatic-1.0.0-py3-none-any.whl`
+- [x] 2.5 Verify CLI works: `bingomatic --version` and `bingomatic --help`
+- [x] 2.6 Verify dependencies installed correctly
 
 ---
 
