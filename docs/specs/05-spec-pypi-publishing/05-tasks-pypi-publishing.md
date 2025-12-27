@@ -53,7 +53,7 @@ Build the package locally and verify it creates valid wheel and sdist artifacts 
 
 ---
 
-### [ ] 3.0 Create GitHub Actions Publish Workflow
+### [x] 3.0 Create GitHub Actions Publish Workflow
 
 Add build and publish jobs to the CI workflow that trigger on GitHub Release creation.
 
@@ -66,15 +66,15 @@ Add build and publish jobs to the CI workflow that trigger on GitHub Release cre
 
 #### 3.0 Tasks
 
-- [ ] 3.1 Add `release: types: [published]` to workflow triggers
-- [ ] 3.2 Create `build` job that runs `uv build`
-- [ ] 3.3 Add `actions/upload-artifact` step to upload `dist/` directory
-- [ ] 3.4 Make `build` job depend on `lint`, `format`, `test` jobs passing
-- [ ] 3.5 Update/fix existing `pypi-publish` job with proper steps
-- [ ] 3.6 Add `actions/download-artifact` to retrieve built package
-- [ ] 3.7 Configure `publish-pypi` job to depend on `build` job
-- [ ] 3.8 Add condition to only run publish on release events
-- [ ] 3.9 Validate YAML syntax locally
+- [x] 3.1 Add `release: types: [published]` to workflow triggers
+- [x] 3.2 Create `build` job that runs `uv build`
+- [x] 3.3 Add `actions/upload-artifact` step to upload `dist/` directory
+- [x] 3.4 Make `build` job depend on `lint`, `format`, `test` jobs passing
+- [x] 3.5 Update/fix existing `pypi-publish` job with proper steps
+- [x] 3.6 Add `actions/download-artifact` to retrieve built package
+- [x] 3.7 Configure `publish-pypi` job to depend on `build` job
+- [x] 3.8 Add condition to only run publish on release events
+- [x] 3.9 Validate YAML syntax locally
 
 ---
 
