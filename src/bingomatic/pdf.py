@@ -394,6 +394,10 @@ def _draw_logo(
     square_x = grid_x + (center_col * SQUARE_SIZE)
     square_y = grid_y + (center_row * SQUARE_SIZE)
 
+    # Draw white background to cover grid lines behind the logo
+    canvas.setFillColorRGB(1, 1, 1)  # White
+    canvas.rect(square_x, square_y, SQUARE_SIZE, SQUARE_SIZE, fill=1, stroke=0)
+
     # Add small padding inside the square
     padding = 4
     logo_x = square_x + padding
