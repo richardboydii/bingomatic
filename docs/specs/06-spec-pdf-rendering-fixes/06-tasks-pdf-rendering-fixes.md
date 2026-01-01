@@ -67,7 +67,7 @@ Create unit tests for the logo transparency and text fitting functionality to pr
 
 ---
 
-### [~] 4.0 Visual Verification and Documentation
+### [x] 4.0 Visual Verification and Documentation
 
 Generate test PDF with problematic content, capture before/after screenshots, and update proof artifacts.
 
@@ -84,7 +84,7 @@ Generate test PDF with problematic content, capture before/after screenshots, an
 - [x] 4.2 Capture "after" screenshots showing fixes
 - [x] 4.3 Create `./06-proofs/` directory
 - [x] 4.4 Create proof artifacts document with before/after comparisons
-- [~] 4.5 Commit all changes with appropriate message
+- [x] 4.5 Commit all changes with appropriate message
 
 ---
 
