@@ -334,7 +334,7 @@ def _draw_name_field(canvas: Canvas, grid_x: float, grid_y: float) -> None:
     """
     # Position name field below grid
     label = "Name:"
-    field_y = grid_y - 18  # 0.25 inch below grid
+    field_y = grid_y - 36  # 0.5 inch below grid
 
     canvas.setFont("Roboto-Bold", 12)
     canvas.setFillColorRGB(0, 0, 0)
