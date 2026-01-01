@@ -1,6 +1,6 @@
 [project]
 name = "bingomatic"
-version = "1.0.0"
+dynamic = ["version"]
 description = "A bingo card generator for conferences like DevOpsDays"
 readme = "README.md"
 authors = [
@@ -36,8 +36,14 @@ Documentation = "https://github.com/richardboydii/bingomatic#readme"
 bingomatic = "bingomatic.cli:main"
 
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
+
+[tool.hatch.version]
+source = "vcs"
+
+[tool.hatch.build.hooks.vcs]
+version-file = "src/bingomatic/_version.py"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/bingomatic"]
