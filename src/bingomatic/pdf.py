@@ -211,7 +211,7 @@ def calculate_grid_positions(
 
     # Center vertically (leaving space for header and name field)
     header_space = 36  # 0.5 inch for event name
-    footer_space = 36  # 0.5 inch for name field below grid
+    footer_space = 54  # 0.75 inch for name field below grid
     available_height = page_height - header_space - footer_space
     y = footer_space + (available_height - GRID_TOTAL) / 2
 
@@ -336,14 +336,14 @@ def _draw_name_field(canvas: Canvas, grid_x: float, grid_y: float) -> None:
     label = "Name:"
     field_y = grid_y - 18  # 0.25 inch below grid
 
-    canvas.setFont("Roboto", 12)
+    canvas.setFont("Roboto-Bold", 12)
     canvas.setFillColorRGB(0, 0, 0)
 
     # Draw "Name:" label
     canvas.drawString(grid_x, field_y, label)
 
     # Draw underline from after label to end of grid
-    label_width = pdfmetrics.stringWidth(label, "Roboto", 12)
+    label_width = pdfmetrics.stringWidth(label, "Roboto-Bold", 12)
     line_start_x = grid_x + label_width + 4
     line_end_x = grid_x + GRID_TOTAL
     line_y = field_y - 2
