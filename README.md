@@ -4,10 +4,6 @@
   <img src="https://github.com/richardboydii/bingomatic/blob/main/images/bingomatic_logo.png?raw=true" alt="Bingomatic Logo" width="300" height="300">
 </p>
 
-#<p align="center">
-#  <img src="images/bingomatic_logo.png" alt="Bingomatic Logo" width="300" height="300">
-#</p>
-
 # Bingomatic
 
 A bingo card generator for conferences like DevOpsDays. This is a simple Python CLI that will generate 5" x 5" bingo cards, two to a landscape page, for use at events and conferences.
