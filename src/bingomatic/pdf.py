@@ -47,7 +47,7 @@ GRID_TOTAL = SQUARE_SIZE * GRID_SIZE  # 5 inches total
 CENTER_SQUARE_INDEX = 12  # Center of 5x5 grid (row 2, col 2 in 0-indexed)
 
 # Text rendering constants
-MIN_FONT_SIZE = 6
+MIN_FONT_SIZE = 4
 MAX_FONT_SIZE = 12
 SQUARE_PADDING = 4
 
@@ -118,7 +118,13 @@ def _fit_text_in_square(
         line_height = font_size * 1.2
         total_height = len(lines) * line_height
 
-        if total_height <= max_height:
+        # Check both height constraint AND that all lines fit within width
+        all_lines_fit_width = all(
+            pdfmetrics.stringWidth(line, font_name, font_size) <= max_width
+            for line in lines
+        )
+
+        if total_height <= max_height and all_lines_fit_width:
             return lines, font_size
 
     # If we can't fit even at minimum size, return with minimum
@@ -203,10 +209,11 @@ def calculate_grid_positions(
     left_x = (page_width - total_width) / 2
     right_x = left_x + GRID_TOTAL + GAP
 
-    # Center vertically (leaving space for header)
+    # Center vertically (leaving space for header and name field)
     header_space = 36  # 0.5 inch for event name
-    available_height = page_height - header_space
-    y = (available_height - GRID_TOTAL) / 2
+    footer_space = 54  # 0.75 inch for name field below grid
+    available_height = page_height - header_space - footer_space
+    y = footer_space + (available_height - GRID_TOTAL) / 2
 
     return left_x, y, right_x, y
 
@@ -327,16 +334,16 @@ def _draw_name_field(canvas: Canvas, grid_x: float, grid_y: float) -> None:
     """
     # Position name field below grid
     label = "Name:"
-    field_y = grid_y - 18  # 0.25 inch below grid
+    field_y = grid_y - 36  # 0.5 inch below grid
 
-    canvas.setFont("Roboto", 12)
+    canvas.setFont("Roboto-Bold", 12)
     canvas.setFillColorRGB(0, 0, 0)
 
     # Draw "Name:" label
     canvas.drawString(grid_x, field_y, label)
 
     # Draw underline from after label to end of grid
-    label_width = pdfmetrics.stringWidth(label, "Roboto", 12)
+    label_width = pdfmetrics.stringWidth(label, "Roboto-Bold", 12)
     line_start_x = grid_x + label_width + 4
     line_end_x = grid_x + GRID_TOTAL
     line_y = field_y - 2
@@ -388,13 +395,17 @@ def _draw_logo(
     square_x = grid_x + (center_col * SQUARE_SIZE)
     square_y = grid_y + (center_row * SQUARE_SIZE)
 
+    # Draw white background to cover grid lines behind the logo
+    canvas.setFillColorRGB(1, 1, 1)  # White
+    canvas.rect(square_x, square_y, SQUARE_SIZE, SQUARE_SIZE, fill=1, stroke=0)
+
     # Add small padding inside the square
     padding = 4
     logo_x = square_x + padding
     logo_y = square_y + padding
     logo_size = SQUARE_SIZE - (padding * 2)
 
-    # Draw the logo, maintaining aspect ratio
+    # Draw the logo, maintaining aspect ratio and preserving transparency
     canvas.drawImage(
         str(logo_path),
         logo_x,
@@ -403,4 +414,5 @@ def _draw_logo(
         height=logo_size,
         preserveAspectRatio=True,
         anchor="c",
+        mask="auto",
     )
