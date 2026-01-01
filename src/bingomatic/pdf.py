@@ -47,7 +47,7 @@ GRID_TOTAL = SQUARE_SIZE * GRID_SIZE  # 5 inches total
 CENTER_SQUARE_INDEX = 12  # Center of 5x5 grid (row 2, col 2 in 0-indexed)
 
 # Text rendering constants
-MIN_FONT_SIZE = 6
+MIN_FONT_SIZE = 4
 MAX_FONT_SIZE = 12
 SQUARE_PADDING = 4
 
@@ -118,7 +118,13 @@ def _fit_text_in_square(
         line_height = font_size * 1.2
         total_height = len(lines) * line_height
 
-        if total_height <= max_height:
+        # Check both height constraint AND that all lines fit within width
+        all_lines_fit_width = all(
+            pdfmetrics.stringWidth(line, font_name, font_size) <= max_width
+            for line in lines
+        )
+
+        if total_height <= max_height and all_lines_fit_width:
             return lines, font_size
 
     # If we can't fit even at minimum size, return with minimum
@@ -394,7 +400,7 @@ def _draw_logo(
     logo_y = square_y + padding
     logo_size = SQUARE_SIZE - (padding * 2)
 
-    # Draw the logo, maintaining aspect ratio
+    # Draw the logo, maintaining aspect ratio and preserving transparency
     canvas.drawImage(
         str(logo_path),
         logo_x,
@@ -403,4 +409,5 @@ def _draw_logo(
         height=logo_size,
         preserveAspectRatio=True,
         anchor="c",
+        mask="auto",
     )

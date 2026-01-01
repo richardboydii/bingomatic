@@ -9,7 +9,12 @@ from bingomatic.pdf import (
     GRID_SIZE,
     GRID_TOTAL,
     GAP,
+    MIN_FONT_SIZE,
+    MAX_FONT_SIZE,
     SQUARE_SIZE,
+    SQUARE_PADDING,
+    _fit_text_in_square,
+    _wrap_text,
     calculate_grid_positions,
     generate_pdf,
     register_fonts,
@@ -246,3 +251,65 @@ def _create_test_image(path: Path) -> None:
 
     img = Image.new("RGB", (100, 100), color="red")
     img.save(path)
+
+
+class TestTextFitting:
+    """Tests for text fitting algorithm."""
+
+    def test_min_font_size_is_4(self):
+        """MIN_FONT_SIZE should be 4pt for long text support."""
+        assert MIN_FONT_SIZE == 4
+
+    def test_max_font_size_is_12(self):
+        """MAX_FONT_SIZE should be 12pt."""
+        assert MAX_FONT_SIZE == 12
+
+    def test_fit_short_text_uses_max_font(self):
+        """Short text should use maximum font size."""
+        register_fonts()
+        max_width = SQUARE_SIZE - (SQUARE_PADDING * 2)
+        max_height = SQUARE_SIZE - (SQUARE_PADDING * 2)
+        lines, font_size = _fit_text_in_square("Hi", max_width, max_height)
+        assert font_size == MAX_FONT_SIZE
+
+    def test_fit_long_text_reduces_font(self):
+        """Long text should reduce font size to fit."""
+        register_fonts()
+        max_width = SQUARE_SIZE - (SQUARE_PADDING * 2)
+        max_height = SQUARE_SIZE - (SQUARE_PADDING * 2)
+        lines, font_size = _fit_text_in_square(
+            "Uses OpenTelemetry in prod", max_width, max_height
+        )
+        assert font_size < MAX_FONT_SIZE
+
+    def test_fit_long_word_reduces_font(self):
+        """Long single word should reduce font size to fit width."""
+        register_fonts()
+        max_width = SQUARE_SIZE - (SQUARE_PADDING * 2)
+        max_height = SQUARE_SIZE - (SQUARE_PADDING * 2)
+        lines, font_size = _fit_text_in_square("OpenTelemetry", max_width, max_height)
+        assert font_size < MAX_FONT_SIZE
+
+    def test_all_lines_fit_within_width(self):
+        """All wrapped lines must fit within max_width."""
+        from reportlab.pdfbase import pdfmetrics
+
+        register_fonts()
+        max_width = SQUARE_SIZE - (SQUARE_PADDING * 2)
+        max_height = SQUARE_SIZE - (SQUARE_PADDING * 2)
+        test_texts = [
+            "Uses OpenTelemetry in prod",
+            "Has an open source project",
+            "Repeat DevOpsDays attendee",
+        ]
+        for text in test_texts:
+            lines, font_size = _fit_text_in_square(text, max_width, max_height)
+            for line in lines:
+                line_width = pdfmetrics.stringWidth(line, "RobotoMono", font_size)
+                assert line_width <= max_width, f"Line '{line}' exceeds max_width"
+
+    def test_wrap_text_splits_on_words(self):
+        """_wrap_text should split text on word boundaries."""
+        register_fonts()
+        lines = _wrap_text("Hello World Test", "RobotoMono", 12, 50)
+        assert len(lines) > 1
