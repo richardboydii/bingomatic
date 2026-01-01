@@ -209,10 +209,11 @@ def calculate_grid_positions(
     left_x = (page_width - total_width) / 2
     right_x = left_x + GRID_TOTAL + GAP
 
-    # Center vertically (leaving space for header)
+    # Center vertically (leaving space for header and name field)
     header_space = 36  # 0.5 inch for event name
-    available_height = page_height - header_space
-    y = (available_height - GRID_TOTAL) / 2
+    footer_space = 36  # 0.5 inch for name field below grid
+    available_height = page_height - header_space - footer_space
+    y = footer_space + (available_height - GRID_TOTAL) / 2
 
     return left_x, y, right_x, y
 
